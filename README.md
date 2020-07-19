@@ -24,29 +24,29 @@ Talking about our Uber data analysis project, data storytelling is an important 
 
 You can download the dataset utilized in this project here – Uber Dataset
 
-1. Importing the Essential Packages
+# 1. Importing the Essential Packages
 In the first step of our R project, we will import the essential packages that we will use in this uber data analysis project. Some of the important libraries of R that we will use are –
 
-ggplot2
+# ggplot2
 This is the backbone of this project. ggplot2 is the most popular data visualization library that is most widely used for creating aesthetic visualization plots.
 
-ggthemes
+# ggthemes
 This is more of an add-on to our main ggplot2 library. With this, we can create better create extra themes and scales with the mainstream ggplot2 package.
 
-lubridate
+# lubridate
 Our dataset involves various time-frames. In order to understand our data in separate time categories, we will make use of the lubridate package.
 
-dplyr
+# dplyr
 This package is the lingua franca of data manipulation in R.
 
-tidyr
+# tidyr
 This package will help you to tidy your data. The basic principle of tidyr is to tidy the columns where each variable is present in a column, each observation is represented by a row and each value depicts a cell.
 
 
-DT
+# DT
 With the help of this package, we will be able to interface with the JavaScript Library called – Datatables.
 
-scales
+# scales
 With the help of graphical scales, we can automatically map the data to the correct scales with well-placed axes and legends.
 
 library(ggplot2)
@@ -66,25 +66,25 @@ Input Screenshot 3:
 
 R import libraries
 
-2. Creating vector of colors to be implemented in our plots
+# 2. Creating vector of colors to be implemented in our plots
 In this step of data science project, we will create a vector of our colors that will be included in our plotting functions. You can also select your own set of colors.
 
 
-Code:
+## Code:
 
 colors = c(""#CC1011", "#665555", "#05a399", "#cfcaca", "#f5e840", "#0683c9", "#e075b0"")
 Input Screenshot 4:
 
 create vector of colors
 
-3. Reading the Data into their designated variables
+# 3. Reading the Data into their designated variables
 Now, we will read several csv files that contain the data from April 2014 to September 2014. We will store these in corresponding data frames like apr_data, may_data, etc. After we have read the files, we will combine all of this data into a single dataframe called ‘data_2014’.
 
 To master this R Uber data analysis project, you need to know everything related to data frames in R
 
 Then, in the next step, we will perform the appropriate formatting of Date.Time column. Then, we will proceed to create factors of time objects like day, month, year etc.
 
-Code:
+## Code:
 
 apr_data <- read.csv("uber-raw-data-apr14.csv")
 may_data <- read.csv("uber-raw-data-may14.csv")
@@ -104,7 +104,7 @@ Input Screenshot 5:
 
 reading the data
 
-Code:
+## Code:
 
 data_2014$hour <- factor(hour(hms(data_2014$Time)))
 data_2014$minute <- factor(minute(hms(data_2014$Time)))
@@ -129,7 +129,7 @@ Output Screenshot:
 
 uber data analysis
 
-Code:
+## Code:
 
 ggplot(hour_data, aes(hour, Total)) + 
         geom_bar( stat = "identity", fill = "steelblue", color = "red") +
@@ -162,7 +162,7 @@ uber data analysis
 Plotting data by trips during every day of the month
 In this section of DataFlair R project, we will learn how to plot our data based on every day of the month. We observe from the resulting visualization that 30th of the month had the highest trips in the year which is mostly contributed by the month of April.
 
-Code:
+## Code:
 
 day_group <- data_2014 %>%
           group_by(day) %>%
@@ -172,7 +172,7 @@ Output Screenshot:
 
 uber data analysis
 
-Code:
+## Code:
 
 ggplot(day_group, aes(day, Total)) + 
         geom_bar( stat = "identity", fill = "steelblue") +
@@ -188,7 +188,7 @@ Output:
 
 uber data analysis
 
-Code:
+## Code:
 
 day_month_group <- data_2014 %>%
          group_by(month, day) %>%
@@ -209,7 +209,7 @@ uber data analysis
 Number of Trips taking place during months in a year
 In this section, we will visualize the number of trips that are taking place each month of the year. In the output visualization, we observe that most trips were made during the month of September. Furthermore, we also obtain visual reports of the number of trips that were made on every day of the week.
 
-Code:
+## Code:
 
 month_group <- data_2014 %>%
           group_by(month) %>%
@@ -217,7 +217,7 @@ month_group <- data_2014 %>%
 datatable(month_group)
 Output Screenshot:uber data analysis
 
-Code:
+## Code:
 
 ggplot( , aes(month, Total, fill = month)) + 
         geom_bar( stat = "identity") +
@@ -251,7 +251,7 @@ uber data analysis
 Finding out the number of Trips by bases
 In the following visualization, we plot the number of trips that have been taken by the passengers from each of the bases. There are five bases in all out of which, we observe that B02617 had the highest number of trips. Furthermore, this base had the highest number of trips in the month B02617. Thursday observed highest trips in the three bases – B02598, B02617, B02682.
 
-Code:
+## Code:
 
 ggplot(data_2014, aes(Base)) + 
  geom_bar(fill = "darkred") +
@@ -265,7 +265,7 @@ Output:
 
 uber data analysis
 
-Code:
+## Code:
 
 ggplot(data_2014, aes(Base, fill = month)) + 
  geom_bar(position = "dodge") +
@@ -280,7 +280,7 @@ Output:
 
 uber data analysis
 
-Code:
+## Code:
 
 ggplot(data_2014, aes(Base, fill = dayofweek)) + 
  geom_bar(position = "dodge") +
@@ -299,7 +299,7 @@ Second, we will plot Heatmap by Month and Day.
 Third, a Heatmap by Month and Day of the Week.
 Fourth, a Heatmap that delineates Month and Bases.
 Finally, we will plot the heatmap, by bases and day of the week.
-Code:
+## Code:
 
 day_and_hour <- data_2014 %>%
          group_by(day, hour) %>%
@@ -313,7 +313,7 @@ Output Screenshot:
 
 uber data analysis
 
-Code:
+## Code:
 
 ggplot(day_and_hour, aes(day, hour, fill = Total)) +
             geom_tile(color = "white") +
@@ -326,7 +326,7 @@ Output:
 
 Heat Map Hour and Day
 
-Code:
+## Code:
 
 ggplot(day_month_group, aes(day, month, fill = Total)) +
             geom_tile(color = "white") +
@@ -339,7 +339,7 @@ Output:
 
 Heat map by Month and Day
 
-Code:
+## Code:
 
 ggplot(month_weekday, aes(dayofweek, month, fill = Total)) +
             geom_tile(color = "white") +
@@ -352,7 +352,7 @@ Output:
 
 Month and Day of Week
 
-Code:
+## Code:
 
 month_base <-  data_2014 %>%
                     group_by(Base, month) %>%
@@ -370,7 +370,7 @@ Output:
 
 Month and Bases Output
 
-Code:
+## Code:
 
 ggplot(day0fweek_bases, aes(Base, dayofweek, fill = Total)) +
             geom_tile(color = "white") +
@@ -386,7 +386,7 @@ Bases and Days of Weeks
 Creating a map visualization of rides in New York
 In the final section, we will visualize the rides in New York city by creating a geo-plot that will help us to visualize the rides during 2014 (Apr – Sep) and by the bases in the same period.
 
-Code:
+## Code:
 
 min_lat <- 40.5774
 max_lat <- 40.9176
@@ -416,7 +416,7 @@ Output:
 
 Uber data analyis using R
 
-Summary
+## Summary
 
 At the end of the Uber data analysis R project, we observed how to create data visualizations. We made use of packages like ggplot2 that allowed us to plot various types of visualizations that pertained to several time-frames of the year. With this, we could conclude how time affected customer trips. Finally, we made a geo plot of New York that provided us with the details of how various users made trips from different bases.
 

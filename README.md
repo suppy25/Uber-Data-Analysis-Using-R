@@ -1,6 +1,7 @@
 # Uber-Data-Analysis-Using-R
 
-!(Downloads\uber-hero-imzge.jpg)
+!(https://api.thedrive.com/wp-content/uploads/2017/01/uber-hero-imzge.jpg?quality=85)
+
 We recommend you to follow all the steps given in the projects so that you will master the technology rapidly. In today’s R project, we will analyze the Uber Pickups in New York City dataset. This is more of a data visualization project that will guide you towards using the ggplot2 library for understanding the data and for developing an intuition for understanding the customers who avail the trips. So, before we start, take a quick revision to data visualization concepts.
 
 R Data Science Project – Uber Data Analysis
